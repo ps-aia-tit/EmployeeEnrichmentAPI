@@ -54,7 +54,7 @@ employee:
         app-portal: 20
         app-analytics: 200
 ```
-##SQL Schema
+## SQL Schema
 ```sql
 
 
@@ -74,7 +74,7 @@ CREATE TABLE empdept (
     empdept VARCHAR(100)
 );
 ```
-##Sample Data
+## Sample Data
 ```query
 
 
@@ -170,7 +170,7 @@ com.aiatit.emp
 
 ```
 
-🧭 How to Run
+## 🧭 How to Run
 
 Clone the repo
 
@@ -192,7 +192,7 @@ Test endpoints via Postman or browser
 }
 ```
 
-🙌 Credits
+## 🙌 Credits
 
 Crafted with clarity, modularity, and design impact in mind.
 
