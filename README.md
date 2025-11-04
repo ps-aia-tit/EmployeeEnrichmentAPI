@@ -54,8 +54,9 @@ employee:
         app-portal: 20
         app-analytics: 200
 ```
+##SQL Schema
 ```sql
-SQL Schema
+
 
 CREATE TABLE employee (
     empid VARCHAR(20) PRIMARY KEY,
@@ -73,8 +74,9 @@ CREATE TABLE empdept (
     empdept VARCHAR(100)
 );
 ```
+##Sample Data
 ```query
-Sample Data
+
 
 INSERT INTO employee VALUES ('EMP001', 'Alice');
 INSERT INTO employee VALUES ('EMP002', 'Bob');
@@ -85,8 +87,9 @@ INSERT INTO empdept VALUES (2, 'HR');
 INSERT INTO empdetail VALUES ('EMP001', 'CA', 1);
 INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
 ```
-```TEXT
+TEXT
 ## 🚀 Endpoints
+```TEXT
 
 | Endpoint                                           | Version | Description                          |
 |---------------------------------------------------|---------|--------------------------------------|
@@ -95,7 +98,7 @@ INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
 | `/api/v3/employees/info?appName=X&page=0`         | v3      | Configurable query + pagination      |
 
 ```
-```TEXT
+
 🧠 Version Explanations
 
 🔹 Version 1 — Manual Mapping
@@ -141,9 +144,10 @@ For advanced use cases:
 Use QueryDSL for type-safe dynamic queries
 
 Use native SQL for performance-critical joins or reporting
-```
+
+## Package Structure
 ```TEXT
-Package Structure
+
 com.aiatit.emp
 ├── controller
 │   └── EmployeeController.java
@@ -165,7 +169,7 @@ com.aiatit.emp
     └── EmployeeQueryConfig.java
 
 ```
-``` Text
+
 🧭 How to Run
 
 Clone the repo
@@ -177,7 +181,8 @@ Access H2 console at http://localhost:8080/h2-console
 Use JDBC URL: jdbc:h2:mem:testdb
 
 Test endpoints via Postman or browser
-```
+
+## Sample json
 ```json
 {
   "empid": "EMP001",
@@ -186,9 +191,9 @@ Test endpoints via Postman or browser
   "empdept": "IT"
 }
 ```
-```TEXT
+
 🙌 Credits
 
 Crafted with clarity, modularity, and design impact in mind.
-```
+
 
