@@ -61,12 +61,17 @@ employee:
         app-hr: 1000
         app-portal: 20
         app-analytics: 200
+
+# Optional: Basic auth credentials
+spring.security.user:
+  name: admin
+  password: admin123
+
 ```
 ✅ Notes
 
 • You can access the H2 console at http://localhost:8080/h2-console
 • Use admin/admin123 for basic auth (or customize in application.yaml)
-• Lombok annotations like @Getter, @Setter, @Data can now be used in your entities and DTOs
 
 ## SQL Schema
 ```sql
