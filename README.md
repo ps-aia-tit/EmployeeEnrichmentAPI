@@ -144,7 +144,7 @@ Resolve page size per app
 
 Pros: Runtime flexibility, multi-tenant supportCons: Requires config discipline
 
-##🏆 Recommendation
+## 🏆 Recommendation
 
 Version 3 is the most flexible and production-ready.It supports:
 
