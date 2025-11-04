@@ -1,4 +1,6 @@
 # 🧩 Employee Enrichment API — Spring Boot (JPA, H2, Configurable Query)
+![Java](https://img.shields.io/badge/java-17-blue)
+![Spring Boot](https://img.shields.io/badge/spring--boot-3.1-green)
 
 This project demonstrates three progressive approaches to enrich employee data using Spring Boot and Spring Data JPA. Each version builds on the previous, showcasing modularity, flexibility, and recruiter-facing clarity.
 
@@ -175,7 +177,16 @@ Access H2 console at http://localhost:8080/h2-console
 Use JDBC URL: jdbc:h2:mem:testdb
 
 Test endpoints via Postman or browser
-
+```
+```json
+{
+  "empid": "EMP001",
+  "empname": "Alice",
+  "country": "CA",
+  "empdept": "IT"
+}
+```
+```TEXT
 🙌 Credits
 
 Crafted with clarity, modularity, and design impact in mind.
