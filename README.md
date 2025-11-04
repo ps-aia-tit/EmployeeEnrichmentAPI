@@ -128,12 +128,14 @@ Join in Java using Map lookups
 
 Pros: Simple, explicit, no entity couplingCons: Manual joins, not scalable, no lazy loading
 
-🔹 Version 2 — JPA Relationships + Join Fetch
+### 🔹 Version 2 — JPA Relationships + Join Fetch
+- Use `@OneToOne` and `@ManyToOne` mappings
+- Use `JOIN FETCH` in repository:
 
-Use @OneToOne and @ManyToOne mappings
-
-Use JOIN FETCH in repository
-
+```java
+@Query("SELECT e FROM Employee e JOIN FETCH e.empDetail d JOIN FETCH d.empDept")
+List<Employee> findAllWithDetails();
+```
 Pros: Clean domain model, declarative joinsCons: Static logic, entity coupling
 
 🔹 Version 3 — Configurable Query via YAML
