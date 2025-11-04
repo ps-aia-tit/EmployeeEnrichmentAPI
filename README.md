@@ -4,8 +4,6 @@ This project demonstrates three progressive approaches to enrich employee data u
 
 > 📦 Base Package: `com.aiatit.emp`
 
----
-
 ## 📚 Use Case
 
 You have three tables:
@@ -21,9 +19,6 @@ The goal is to expose a REST API that returns enriched employee info:
   "country": "CA",
   "empdept": "IT"
 }
-
-
----
 
 ✅ H2 Setup and Schema
 
@@ -57,7 +52,6 @@ employee:
 
 
 SQL Schema
-
 CREATE TABLE employee (
     empid VARCHAR(20) PRIMARY KEY,
     empname VARCHAR(100)
@@ -74,7 +68,6 @@ CREATE TABLE empdept (
     empdept VARCHAR(100)
 );
 
-
 Sample Data
 
 INSERT INTO employee VALUES ('EMP001', 'Alice');
@@ -87,110 +80,96 @@ INSERT INTO empdetail VALUES ('EMP001', 'CA', 1);
 INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
 
 
----
-
 🚀 Endpoints
 
-Endpoint	Version	Description	
-/api/employees/info	v1	Manual mapping	
-/api/v2/employees/info	v2	JPA join fetch	
-/api/v3/employees/info?appName=X&page=0	v3	Configurable query + pagination	
 
 
----
 
 🧠 Version Explanations
 
 🔹 Version 1 — Manual Mapping
 
-Approach:
-Fetch all tables independently and join in Java using Map lookups.
+Approach:Fetch all tables independently and join in Java using Map lookups.
 
 Pros:
 
-• Simple and explicit
-• Easy to debug
-• No entity coupling
+Simple and explicit
 
+Easy to debug
+
+No entity coupling
 
 Cons:
 
-• Manual join logic
-• No lazy loading
-• Not scalable for large datasets
+Manual join logic
 
+No lazy loading
+
+Not scalable for large datasets
 
 Best for: quick prototypes, legacy systems, or when JPA is not feasible
 
----
-
 🔹 Version 2 — JPA Relationships + Join Fetch
 
-Approach:
-Use @OneToOne and @ManyToOne mappings with JOIN FETCH in repository.
+Approach:Use @OneToOne and @ManyToOne mappings with JOIN FETCH in repository.
 
 Pros:
 
-• Clean domain model
-• Declarative joins
-• Reusable relationships
+Clean domain model
 
+Declarative joins
+
+Reusable relationships
 
 Cons:
 
-• Static join logic
-• Entity coupling
-• Harder to customize at runtime
+Static join logic
 
+Entity coupling
+
+Harder to customize at runtime
 
 Best for: clean domain-driven design, internal APIs
 
----
-
 🔹 Version 3 — Configurable Query via YAML
 
-Approach:
-Externalize filters, joins, and pagination in application.yaml. Resolve page size per app.
+Approach:Externalize filters, joins, and pagination in application.yaml. Resolve page size per app.
 
 Pros:
 
-• Runtime flexibility
-• Per-app pagination
-• Clean separation of config and logic
+Runtime flexibility
 
+Per-app pagination
+
+Clean separation of config and logic
 
 Cons:
 
-• Slightly more setup
-• Requires config discipline
+Slightly more setup
 
+Requires config discipline
 
 Best for: multi-tenant APIs, configurable platforms, analytics dashboards
 
----
-
 🏆 Recommendation
 
-Version 3 is the most flexible and production-ready.
-It supports:
+Version 3 is the most flexible and production-ready.It supports:
 
-• Dynamic filters
-• Per-app pagination
-• Join toggles
-• Clean YAML-driven logic
+Dynamic filters
 
+Per-app pagination
 
----
+Join toggles
+
+Clean YAML-driven logic
 
 💡 Optional Version 4 — QueryDSL or Native SQL
 
 For advanced use cases:
 
-• Use QueryDSL for type-safe dynamic queries
-• Use native SQL for performance-critical joins or reporting
+Use QueryDSL for type-safe dynamic queries
 
-
----
+Use native SQL for performance-critical joins or reporting
 
 📁 Package Structure
 
@@ -214,20 +193,20 @@ com.aiatit.emp
 └── config
     └── EmployeeQueryConfig.java
 
-
----
-
 🧭 How to Run
 
-1. Clone the repo
-2. Run EmployeeApplication.java
-3. Access H2 console at http://localhost:8080/h2-console
-4. Use JDBC URL: jdbc:h2:mem:testdb
-5. Test endpoints via Postman or browser
+Clone the repo
 
+Run EmployeeApplication.java
 
----
+Access H2 console at http://localhost:8080/h2-console
+
+Use JDBC URL: jdbc:h2:mem:testdb
+
+Test endpoints via Postman or browser
 
 🙌 Credits
 
-Crafted with clarity, modularity, and recruiter impact in mind.
+Crafted with clarity, modularity.
+
+
