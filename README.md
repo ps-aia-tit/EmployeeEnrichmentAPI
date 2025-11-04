@@ -85,7 +85,6 @@ INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
 ```
 ```TEXT
 ## 🚀 Endpoints
-## 🚀 Endpoints
 
 | Endpoint                                           | Version | Description                          |
 |---------------------------------------------------|---------|--------------------------------------|
