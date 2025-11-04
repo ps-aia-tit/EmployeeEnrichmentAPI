@@ -20,7 +20,165 @@ The goal is to expose a REST API that returns enriched employee info:
   "empname": "Alice",
   "country": "CA",
   "empdept": "IT"
-)
+}
+```
+✅ H2 Setup and Schema
 
+`application.yaml`
+```yaml
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
-### Test
+employee:
+  query:
+    enabled: true
+    joinFetch: true
+    filters:
+      empid: null
+      country: null
+      deptName: null
+    pagination:
+      default-page-size: 50
+      app-page-sizes:
+        app-hr: 1000
+        app-portal: 20
+        app-analytics: 200
+```
+```sql
+SQL Schema
+
+CREATE TABLE employee (
+    empid VARCHAR(20) PRIMARY KEY,
+    empname VARCHAR(100)
+);
+
+CREATE TABLE empdetail (
+    empid VARCHAR(20) PRIMARY KEY,
+    country VARCHAR(100),
+    deptid BIGINT
+);
+
+CREATE TABLE empdept (
+    deptid BIGINT PRIMARY KEY,
+    empdept VARCHAR(100)
+);
+```
+```query
+Sample Data
+
+INSERT INTO employee VALUES ('EMP001', 'Alice');
+INSERT INTO employee VALUES ('EMP002', 'Bob');
+
+INSERT INTO empdept VALUES (1, 'IT');
+INSERT INTO empdept VALUES (2, 'HR');
+
+INSERT INTO empdetail VALUES ('EMP001', 'CA', 1);
+INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
+```
+```TEXT
+## 🚀 Endpoints
+## 🚀 Endpoints
+
+| Endpoint                                           | Version | Description                          |
+|---------------------------------------------------|---------|--------------------------------------|
+| `/api/employees/info`                             | v1      | Manual mapping                       |
+| `/api/v2/employees/info`                          | v2      | JPA join fetch                       |
+| `/api/v3/employees/info?appName=X&page=0`         | v3      | Configurable query + pagination      |
+
+```
+```TEXT
+🧠 Version Explanations
+
+🔹 Version 1 — Manual Mapping
+
+Fetch all tables independently
+
+Join in Java using Map lookups
+
+Pros: Simple, explicit, no entity couplingCons: Manual joins, not scalable, no lazy loading
+
+🔹 Version 2 — JPA Relationships + Join Fetch
+
+Use @OneToOne and @ManyToOne mappings
+
+Use JOIN FETCH in repository
+
+Pros: Clean domain model, declarative joinsCons: Static logic, entity coupling
+
+🔹 Version 3 — Configurable Query via YAML
+
+Externalize filters, joins, and pagination
+
+Resolve page size per app
+
+Pros: Runtime flexibility, multi-tenant supportCons: Requires config discipline
+
+🏆 Recommendation
+
+Version 3 is the most flexible and production-ready.It supports:
+
+Dynamic filters
+
+Per-app pagination
+
+Join toggles
+
+Clean YAML-driven logic
+
+💡 Optional Version 4 — QueryDSL or Native SQL
+
+For advanced use cases:
+
+Use QueryDSL for type-safe dynamic queries
+
+Use native SQL for performance-critical joins or reporting
+```
+```TEXT
+Package Structure
+com.aiatit.emp
+├── controller
+│   └── EmployeeController.java
+├── dto
+│   └── EmployeeInfo.java
+├── entity
+│   ├── v1/
+│   ├── v2/
+│   └── v3/
+├── repository
+│   ├── v1/
+│   ├── v2/
+│   └── v3/
+├── service
+│   ├── EmployeeService.java
+│   ├── EmployeeV2Service.java
+│   └── EmployeeV3Service.java
+└── config
+    └── EmployeeQueryConfig.java
+
+```
+``` Text
+🧭 How to Run
+
+Clone the repo
+
+Run EmployeeApplication.java
+
+Access H2 console at http://localhost:8080/h2-console
+
+Use JDBC URL: jdbc:h2:mem:testdb
+
+Test endpoints via Postman or browser
+
+🙌 Credits
+
+Crafted with clarity, modularity, and design impact in mind.
+```
+
