@@ -136,7 +136,8 @@ Pros: Simple, explicit, no entity couplingCons: Manual joins, not scalable, no l
 @Query("SELECT e FROM Employee e JOIN FETCH e.empDetail d JOIN FETCH d.empDept")
 List<Employee> findAllWithDetails();
 ```
-Pros: Clean domain model, declarative joinsCons: Static logic, entity coupling
+Pros: Clean domain model, declarative joins
+Cons: Static logic, entity coupling
 
 🔹 Version 3 — Configurable Query via YAML
 
@@ -144,7 +145,8 @@ Externalize filters, joins, and pagination
 
 Resolve page size per app
 
-Pros: Runtime flexibility, multi-tenant supportCons: Requires config discipline
+Pros: Runtime flexibility, multi-tenant support
+Cons: Requires config discipline
 
 ## 🏆 Recommendation
 
