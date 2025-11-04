@@ -1,6 +1,14 @@
 # 🧩 Employee Enrichment API — Spring Boot (JPA, H2, Configurable Query)
+
 ![Java](https://img.shields.io/badge/java-17-blue)
 ![Spring Boot](https://img.shields.io/badge/spring--boot-3.1-green)
+![H2](https://img.shields.io/badge/database-H2-lightgrey)
+![JPA](https://img.shields.io/badge/JPA-enabled-yellow)
+![REST API](https://img.shields.io/badge/API-REST--ful-orange)
+![License](https://img.shields.io/github/license/ps-aia-tit/EmployeeEnrichmentAPI)
+![Last Commit](https://img.shields.io/github/last-commit/ps-aia-tit/EmployeeEnrichmentAPI)
+![Stars](https://img.shields.io/github/stars/ps-aia-tit/EmployeeEnrichmentAPI?style=social)
+
 
 This project demonstrates three progressive approaches to enrich employee data using Spring Boot and Spring Data JPA. Each version builds on the previous, showcasing modularity, flexibility, and recruiter-facing clarity.
 
