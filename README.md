@@ -24,7 +24,7 @@ The goal is to expose a REST API that returns enriched employee info:
   "empdept": "IT"
 }
 ```
-✅ H2 Setup and Schema
+## ✅ H2 Setup and Schema
 
 `application.yaml`
 ```yaml
@@ -87,7 +87,7 @@ INSERT INTO empdept VALUES (2, 'HR');
 INSERT INTO empdetail VALUES ('EMP001', 'CA', 1);
 INSERT INTO empdetail VALUES ('EMP002', 'US', 2);
 ```
-TEXT
+
 ## 🚀 Endpoints
 ```TEXT
 
@@ -99,7 +99,7 @@ TEXT
 
 ```
 
-🧠 Version Explanations
+## 🧠 Version Explanations
 
 🔹 Version 1 — Manual Mapping
 
@@ -125,7 +125,7 @@ Resolve page size per app
 
 Pros: Runtime flexibility, multi-tenant supportCons: Requires config discipline
 
-🏆 Recommendation
+##🏆 Recommendation
 
 Version 3 is the most flexible and production-ready.It supports:
 
